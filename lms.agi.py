@@ -23,7 +23,7 @@ agi = AGI()
 parser = argparse.ArgumentParser(description='Process LMS commands.')
 parser.add_argument('player', type=str, nargs=1, help="MAC adress of player", action=VerifyMacaddressAction)
 parser.add_argument('command', type=str, nargs=1, default="mode",
-                    choices=['mode', 'start', 'stop', 'toggle'],
+                    choices=['mode', 'start', 'stop', 'toggle', 'pause', 'unpause'],
                     help='Command to execute on LMS player')
 
 args = parser.parse_args()
@@ -50,3 +50,8 @@ if args.command[0] == "start":
 if args.command[0] == "toggle":
     sq.toggle()
 
+if args.command[0] == "pause":
+    sq.pause()
+
+if args.command[0] == "unpause":
+    sq.unpause()
