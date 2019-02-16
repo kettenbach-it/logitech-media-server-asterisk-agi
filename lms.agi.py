@@ -43,13 +43,10 @@ if args.command[0] == "mode":
 
 if args.command[0] == "stop":
     sq.stop()
-    print("SET VARIABLE LMSSTATUS " + sq.get_mode())
 
 if args.command[0] == "start":
     sq.play()
-    print("SET VARIABLE LMSSTATUS " + sq.get_mode())
 
 if args.command[0] == "toggle":
     sq.toggle()
-    print("SET VARIABLE LMSSTATUS " + sq.get_mode())
 
