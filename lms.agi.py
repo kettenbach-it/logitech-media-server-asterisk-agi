@@ -28,7 +28,7 @@ parser.add_argument('command', type=str, nargs=1, default="mode",
 
 args = parser.parse_args()
 
-sc = Server(hostname="sbs.rz.kettenbach-it.de", port=9090)
+sc = Server(hostname="lms.wi.kettenbach-it.de", port=9090)
 sc.connect()
 sq = sc.get_player(args.player[0])  # type: Player
 
