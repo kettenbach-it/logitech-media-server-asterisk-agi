@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.4
 # pylint: disable=line-too-long
 """
-AGI for cotrolling the Logitech Media Server from Asterisk
+AGI for controlling the Logitech Media Server from Asterisk
 """
 import argparse
 import re
