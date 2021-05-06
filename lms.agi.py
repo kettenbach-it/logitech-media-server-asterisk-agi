@@ -1,19 +1,26 @@
 #!/usr/bin/env python3.4
-
-from asterisk.agi import *
+# pylint: disable=line-too-long
+"""
+AGI for cotrolling the Logitech Media Server from Asterisk
+"""
 import argparse
 import re
+import sys
 
+from asterisk.agi import AGI
+from pylms.player import Player
 # Package needs to be fixed: https://github.com/jinglemansweep/PyLMS/issues/15
 from pylms.server import Server
-from pylms.player import Player
 
 
 class VerifyMacaddressAction(argparse.Action):
-    def __call__(self, parser, namespace, values, option_string=None):
+    """
+    Verify Mac Adress
+    """
+    def __call__(self, parsr, namespace, values, option_string=None):
         if not re.match("[0-9a-f]{2}([-:]?)[0-9a-f]{2}(\\1[0-9a-f]{2}){4}$", values[0].lower()):
             sys.stderr.write("Invalid MAC")
-            exit(-1)
+            sys.exit(-1)
         else:
             setattr(namespace, self.dest, values)
 
@@ -34,10 +41,10 @@ sq = sc.get_player(args.player[0])  # type: Player
 
 if sq is None:
     sys.stderr.write("Player not found")
-    exit(-1)
+    sys.exit(-1)
 
 if args.command[0] == "mode":
-    #agi.set_variable("LMSSTATUS", str(sq.get_mode()))
+    # agi.set_variable("LMSSTATUS", str(sq.get_mode()))
     # agi_set_varaible is broken: https://github.com/rdegges/pyst2/issues/19
     print("SET VARIABLE LMSSTATUS " + sq.get_mode())
 
